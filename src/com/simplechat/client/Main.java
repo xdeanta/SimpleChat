@@ -9,8 +9,11 @@ public class Main {
     public static void main(String[] args) {
         try {
             Conexion conx = new Conexion("192.168.56.2", 7500);
-            conx.connected();
+            if(conx.connected()){
+                System.out.println("Conectado");
+            }
             conx.getData().getDataTypeOutput().writeBoolean(true);
+            conx.closeSocket();
         }catch (IOException e){
             System.out.println("Error al intentar conectar con el servidor");
         }

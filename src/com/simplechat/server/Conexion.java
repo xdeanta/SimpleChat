@@ -42,7 +42,9 @@ public class Conexion {
             socket = sSocket.accept();
             data = new IOStream(socket.getInputStream(),socket.getOutputStream());
             confirmConnection();
-            connected();
+            if(connected()){
+                System.out.println("Cliente conectado");
+            }
         }catch (IOException e){
             System.out.println("No se pudo acceptar la conexion");
         }
