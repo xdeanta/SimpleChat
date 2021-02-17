@@ -5,7 +5,7 @@ import java.io.IOException;
 public class Main {
     public static void main(String args[]){
         try {
-            Conexion conx = new Conexion("192.168.56.2", 7500);
+            ConexionServer conx = new ConexionServer("192.168.56.2", 7500);
             conx.acceptConnection();
             conx.confirmConnection();
             conx.closeSockets();

@@ -8,7 +8,7 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            Conexion conx = new Conexion("192.168.56.2", 7500);
+            ConexionCliente conx = new ConexionCliente("192.168.56.2", 7500);
             if(conx.connected()){
                 System.out.println("Conectado");
             }
