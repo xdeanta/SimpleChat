@@ -12,7 +12,7 @@ public class Main {
             if(conx.connected()){
                 System.out.println("Conectado");
             }
-            conx.getData().getDataTypeOutput().writeBoolean(true);
+            conx.confirmConnection();
             conx.closeSocket();
         }catch (IOException e){
             System.out.println("Error al intentar conectar con el servidor");
