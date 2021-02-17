@@ -19,7 +19,5 @@ public class ConexionCliente extends Conexion {
     public void closeSocket() throws IOException{
         socket.close();
     }
-    public IOStream getData(){
-        return data;
-    }
+
 }

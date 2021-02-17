@@ -42,5 +42,8 @@ public abstract class Conexion {
         }
     }
 
+    public IOStream getData(){
+        return data;
+    }
 
 }

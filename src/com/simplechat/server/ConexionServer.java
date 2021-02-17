@@ -15,6 +15,7 @@ public class ConexionServer extends Conexion{
         sSocket = new ServerSocket();
         addr = new InetSocketAddress(ip,port);
         sSocket.bind(addr);
+        data = new IOStream(socket.getInputStream(),socket.getOutputStream());
     }
 
 }
