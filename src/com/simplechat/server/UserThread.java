@@ -38,6 +38,7 @@ public class UserThread extends Thread{
             sSocket.getIostream().getDataTypeOutput().writeUTF("Bienvenido " + c.getUsername());
             while (true){
                 String str = sSocket.getIostream().getDataTypeInput().readUTF();
+                System.out.println("Mensaje recibido: " + str);
                 if(str.equals("bye")){
                     sSocket.getIostream().getDataTypeOutput().writeUTF("disconnecting...");
                     break;
