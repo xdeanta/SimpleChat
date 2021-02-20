@@ -14,6 +14,7 @@ public class ServerListener extends Thread{
 
     public void run(){
         while(true){
+            System.out.println("Escuchando...");
             serverSocket.acceptConnection();
             if(users.size() < 10) {
                 System.out.println("Conexion Aceptada");
