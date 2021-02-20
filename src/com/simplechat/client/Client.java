@@ -2,15 +2,13 @@ package com.simplechat.client;
 
 public class Client {
     private String username;
-    private String password;
 
-    public Client() {
-        this(null,null);
+    public Client(Client c){
+        this(c.getUsername());
     }
 
-    public Client(String username, String password) {
+    public Client(String username) {
         this.username = username;
-        this.password = password;
     }
 
     public String getUsername() {
@@ -21,11 +19,4 @@ public class Client {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }

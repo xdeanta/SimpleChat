@@ -1,15 +1,15 @@
 package com.simplechat.server;
 
 import com.simplechat.client.Client;
+import com.simplechat.common.Message;
 
 import java.util.ArrayList;
 
 public class Channel {
     private String name;
-    private Client[] clients;
     private final int MAX_CLIENTS = 10;
     private static final Channel main = new Channel();
-    private ArrayList<String> messages;
+    private ArrayList<Message> messages;
 
     public String getName() {
         return name;
@@ -17,7 +17,6 @@ public class Channel {
 
     private Channel(){
         name = "#main";
-        clients = new Client[MAX_CLIENTS];
         messages=new ArrayList<>();
     }
 
@@ -25,9 +24,10 @@ public class Channel {
         return main;
     }
 
-    public synchronized void addMessage(String message){
+    public synchronized void addMessage(Message message){
         messages.add(message);
     }
+
     public void broadcastMessage(){
 
     }
