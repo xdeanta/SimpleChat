@@ -25,12 +25,14 @@ public class ServerListener extends Thread{
                 System.out.println("Conexion Aceptada");
                 UserThread usr = new UserThread(serverSocket);
                 usr.setChannel(ch);
+                ch.setUsuarios(users);
                 users.add(usr);
                 usr.start();
             }else{
                 try {
                     serverSocket.getIostream().getDataTypeOutput().writeUTF("Conexion rechazada");
                     System.out.println("Conexion rechazada");
+                    serverSocket.closeSocket();
                 }catch (IOException e){
                     e.printStackTrace();
                 }finally {

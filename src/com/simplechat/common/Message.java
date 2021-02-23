@@ -2,7 +2,9 @@ package com.simplechat.common;
 
 import com.simplechat.client.Client;
 
-public class Message {
+import java.io.Serializable;
+
+public class Message implements Serializable {
     private Client client;
     private String str;
 
@@ -13,5 +15,9 @@ public class Message {
 
     public String showMessage(){
         return "[" + client.getUsername() + "]: " + str;
+    }
+
+    public String getStr(){
+        return str;
     }
 }

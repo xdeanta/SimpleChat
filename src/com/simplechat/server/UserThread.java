@@ -28,27 +28,39 @@ public class UserThread extends Thread{
         ch=c;
     }
 
-    public void sendMessage(Message msg){
+    public void messageToChannel(Message msg){
         ch.addMessage(msg);
+    }
+
+    public void messageToUsers(Message msg){
+        try {
+            sSocket.getIostream().getObjout().writeObject(msg);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     public void run(){
         Message msg;
         try{
+            setClient();
             sSocket.getIostream().getDataTypeOutput().writeUTF("Bienvenido " + c.getUsername());
             while (true){
-                String str = sSocket.getIostream().getDataTypeInput().readUTF();
-                System.out.println("Mensaje recibido: " + str);
-                if(str.equals("bye")){
+                /*String str = sSocket.getIostream().getDataTypeInput().readUTF();
+                System.out.println("Mensaje recibido: " + str);*/
+                msg=(Message) sSocket.getIostream().getObjin().readObject();
+                if(msg.getStr().equals("bye")){
                     sSocket.getIostream().getDataTypeOutput().writeUTF("disconnecting...");
                     break;
                 }else {
-                    msg = new Message(c, str);
-                    sendMessage(msg);
+                    //msg = new Message(c, str);
+                    messageToChannel(msg);
                 }
             }
         }catch (IOException e){
             e.printStackTrace();
+        }catch (ClassNotFoundException e2){
+            e2.printStackTrace();
         }
     }
 }

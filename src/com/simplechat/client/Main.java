@@ -25,7 +25,9 @@ public class Main {
                 if(str.equals("bye")){
                     break;
                 }
-                clientSocket.getIostream().getDataTypeOutput().writeUTF(str);
+                msg = new Message(c,str);
+                clientSocket.getIostream().getObjout().writeObject(msg);
+                //clientSocket.getIostream().getDataTypeOutput().writeUTF(str);
             }
             clientSocket.closeSocket();
         }catch (IOException e){

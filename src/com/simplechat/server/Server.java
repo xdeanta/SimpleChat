@@ -8,7 +8,7 @@ public class Server {
         ArrayList<UserThread> usrs = new ArrayList<>();
         ServerListener sl = new ServerListener(usrs);
         sl.setCh(c);
-        sl.run();
+        sl.start();
         try {
             sl.join();
         }catch (InterruptedException e){
