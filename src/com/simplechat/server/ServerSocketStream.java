@@ -23,6 +23,7 @@ public class ServerSocketStream extends SocketStream {
     public void acceptConnection(){
         try {
             socket = sSocket.accept();
+            createIOStream();
         }catch (IOException e){
             e.printStackTrace();
         }
